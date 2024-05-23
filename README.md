@@ -171,7 +171,7 @@ zone "iem.local" {
     file "/etc/bind/db.iem.local";
 };
 ```
-4. Open the file ```DNS/db.iem.local``` and change ```<IP>`` to the IP of ubuntu, and save.
+4. Open the file ```DNS/db.iem.local``` and change ``` <IP> `` to the IP of ubuntu, and save.
 
 5. Move the file db.iem.local file to the bind folder
 
