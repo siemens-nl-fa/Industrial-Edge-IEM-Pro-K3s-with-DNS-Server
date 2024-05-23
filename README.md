@@ -174,6 +174,9 @@ zone "iem.local" {
 4. Open the file ```DNS/db.iem.local``` and change ```<IP>``` to the IP of ubuntu, and save.
 
 5. Move the file db.iem.local file to the bind folder
+```bash
+cp ./DNS/db.iem.local /etc/bind/db.iem.local
+```
 
 6. Restart the DNS Server 
 ```bash
