@@ -1,0 +1,36 @@
+central-auth:
+  keycloak:
+    customerRealmAdmin:
+      # 
+      # Email of the initial IEM admin
+      email: admin@admin.com
+      # 
+      # first name of the initial IEM admin
+      firstName: root
+      # 
+      # last name of the initial IEM admin
+      lastName: admin
+      # 
+      # username of the initial IEM admin
+      username: admin
+    initialUser:
+      # Enable creation of the initial IEM user
+      enabled: false
+global:
+  
+  # Password for Customer Realm Admin
+  customerAdminPassword: "Password123!"
+  # 
+  # sets the passwords of initial users as temporary
+  temporaryPassword: false
+
+  # Storage class which will be used for creating Persistent Volume Claims for IEM Core Services like Docker Registry Service
+  storageClass: local-path
+  #
+  # Storage class which will be used for creating Persistent Volume Claim for Postgress database
+  storageClassPg: local-path
+
+#output:
+  #
+  # Print out initial user passwords?
+  # printPasswords: false
