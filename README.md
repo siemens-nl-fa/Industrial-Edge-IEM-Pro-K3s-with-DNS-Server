@@ -187,9 +187,12 @@ nslookup iem.local
 
 The result should look something like this:
 ```bash
+Server:         127.0.0.53
+Address:        127.0.0.53#53
+
 Non-authoritative answer:
 Name:   iem.local
-Address: 127.0.0.1
+Address: 192.168.0.100
 ```
 
 
