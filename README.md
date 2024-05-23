@@ -151,6 +151,50 @@ kubectl -n iem create secret tls iemcert --cert=./Certificates/out/myCert.crt --
 
 <br>
 
+### Install bind9 for ubuntu
+1. Install bind9
+```bash
+sudo apt update
+sudo apt install bind9
+```
+
+2. Edit the following file
+
+```bash 
+sudo nano /etc/bind/named.conf.local
+```
+3. And add the following text
+
+```bash
+zone "iem.local" {
+    type master;
+    file "/etc/bind/db.iem.local";
+};
+```
+4. Open the file ```DNS/db.iem.local``` and change ```<IP>`` to the IP of ubuntu, and save.
+
+5. Move the file db.iem.local file to the bind folder
+
+6. Restart the DNS Server 
+```bash
+sudo systemctl restart bind9
+```
+
+7. Check if iem.local exists.
+```bash
+nslookup iem.local
+```
+
+The result should look something like this:
+```bash
+Non-authoritative answer:
+Name:   iem.local
+Address: 127.0.0.1
+```
+
+
+
+
 ### Access the management
 1. Open the browser `https://iem.local`
 2. Login with: username: `admin`, password: `Password123!`    
