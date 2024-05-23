@@ -49,20 +49,14 @@ Ensure you have the following in place before proceeding:
 Get Started and operate > Industrial Edge management > IEM Pro > Getting Started > Setup Cluster > Using K3s > Scroll down to certificates code example and take 'Generate certificate by providing IP address'.
     * Option 2: <br>
 Use these files or use the already existing files in the 'Certificates' Folder.
-2. Change the value in cert.conf
-change the value CN=localhost to
-```bash
-CN=[ip]
-```
-  * Set your assigned NIC for setting up the management, for example CN=192.168.0.100 <br>
-4. Give write access to gen_with_ca_IP.sh and Generate Certificates
-```bash
-sudo chmod +x ./Certificates/gen_with_ca_IP.sh
-./Certificates/gen_with_ca_IP.sh [ip]
-```
-For example ```./Certificates/gen_with_ca_IP.sh 192.168.0.100```
 
-4. Now your created certificates are in the folder '/Certificates/out' these will be used later.
+2. Give write access to gen_with_ca_IP.sh and Generate Certificates
+```bash
+sudo chmod +x ./Certificates/gen_with_ca.sh
+./Certificates/gen_with_ca.sh iem.local
+```
+
+3. Now your created certificates are in the folder '/Certificates/out' these will be used later.
 
 <br>
 
@@ -106,10 +100,10 @@ sudo chown <your-user:your-group> ~/.kube/config
 <br>
 
 ### 6 Install the IEM on the kubernetes (k3s) Cluster
-1. Replace `<ip>` with the management ip address and run
+1. Run
 ```bash
  ieprovision install ./Onboarding/configuration.json \
- --set global.hostname=<ip> \
+ --set global.hostname=iem.local \
  --namespace iem \
  --values ./Kubernetes/template.yaml \
  --set global.certChain="$(cat ./Certificates/out/certChain.crt | base64 -w 0)" \
@@ -126,7 +120,7 @@ sudo chown <your-user:your-group> ~/.kube/config
 
         ** Please be patient while the chart is being deployed **
 
-        IEM: https://<ip>/
+        IEM: https://iem.local/
 
         NAMESPACE: iem
 
@@ -143,8 +137,7 @@ kubectl get svc --no-headers -o custom-columns=":metadata.name" -n iem | grep ga
 ```
 2. Copy your output: `123456-gateway-proxy` (example)
 3. And paste in the `./Kubernetes/ingress.yaml` replace the `<name-gateway-proxy>`
-4. In  `./Kubernetes/ingress.yaml` Replace `<ip>` with the management ip address
-5. Deploy Ingress 
+4. Deploy Ingress 
 ```bash
 kubectl apply -f ./Kubernetes/ingress.yaml
 ```
@@ -159,7 +152,7 @@ kubectl -n iem create secret tls iemcert --cert=./Certificates/out/myCert.crt --
 <br>
 
 ### Access the management
-1. Open the browser `https://<ip>`
+1. Open the browser `https://iem.local`
 2. Login with: username: `admin`, password: `Password123!`    
 
 <br><br>

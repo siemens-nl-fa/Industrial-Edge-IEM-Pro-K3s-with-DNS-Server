@@ -11,12 +11,12 @@ spec:
   - hosts:
     #
     # Hostname for accessing the IEM e.g. iem.siemens.com
-    - <ip>    
+    - iem.local    
     secretName: iemcert
   rules:
   #
   # Hostname for accessing the IEM e.g. iem.siemens.com
-  #- host: management.industrialedge.com
+  - host: iem.local
   -  http:
       paths:
       - path: /
