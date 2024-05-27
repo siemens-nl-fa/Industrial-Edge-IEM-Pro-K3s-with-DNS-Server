@@ -151,7 +151,7 @@ kubectl -n iem create secret tls iemcert --cert=./Certificates/out/myCert.crt --
 
 <br>
 
-### Install bind9 for ubuntu
+### setup DNS (bind9) for ubuntu
 1. Install bind9
 ```bash
 sudo apt update
@@ -198,6 +198,14 @@ Name:   iem.local
 Address: 192.168.0.100
 ```
 
+8. optional: For local access change /etc/hosts
+```bash
+sudo nano /etc/hosts
+```
+add the following line and save
+```bash
+127.0.0.1 iem.local
+```
 
 
 
