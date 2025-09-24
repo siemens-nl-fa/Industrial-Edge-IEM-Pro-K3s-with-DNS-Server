@@ -78,7 +78,7 @@ sudo chown -R $USER /etc/rancher/k3s/k3s.yaml
 ```
 
 ### Install the Ieprovision tool
-1. give rights to to be able to place files:
+1. give rights to to be able to place files: (inside the Industrial-Edge-IEM-Pro-K3s-with-DNS-Server folder)
 ```bash
 chown -R $USER ./
 ```
