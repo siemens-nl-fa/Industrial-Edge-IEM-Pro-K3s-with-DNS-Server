@@ -78,9 +78,9 @@ sudo chown -R $USER /etc/rancher/k3s/k3s.yaml
 ```
 
 ### Install the Ieprovision tool
-1. give rights to to be able to place files: (inside the Industrial-Edge-IEM-Pro-K3s-with-DNS-Server folder)
+1. give rights to to be able to place files: (run in parent of the Industrial-Edge-IEM-Pro-K3s-with-DNS-Server folder)
 ```bash
-chown -R $USER ./
+chown -R $USER ./Industrial-Edge-IEM-Pro-K3s-with-DNS-Server
 ```
 2. Download the ieprovision tool from the [iehub.eu1.edge.siemens.cloud](https://iehub.eu1.edge.siemens.cloud)
 3. Extract the folder and place the file 'ieprovision' in the Provision Folder
