@@ -78,10 +78,14 @@ sudo chown -R $USER /etc/rancher/k3s/k3s.yaml
 ```
 
 ### Install the Ieprovision tool
-1. Download the ieprovision tool from the [iehub.eu1.edge.siemens.cloud](https://iehub.eu1.edge.siemens.cloud)
-2. Extract the folder and place the file 'ieprovision' in the Provision Folder
+1. give rights to to be able to place files:
+```bash
+chown -R $USER ./
+```
+2. Download the ieprovision tool from the [iehub.eu1.edge.siemens.cloud](https://iehub.eu1.edge.siemens.cloud)
+3. Extract the folder and place the file 'ieprovision' in the Provision Folder
 Extract the ieprovision to the ./Provision folder.
-3. Install the file as Alias
+4. Install the file as Alias
 
 ```bash
 sudo install ./Provision/ieprovision /usr/local/bin/
