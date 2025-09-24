@@ -43,7 +43,7 @@ Ensure you have the following in place before proceeding:
 
 ## Installation
 
-### 1 Generate certificates
+### Generate certificates
 1. Get the files from docs.eu1.edge.siemens.cloud or use the 'Certificates' folder
     * Option 1: <br>
 Get Started and operate > Industrial Edge management > IEM Pro > Getting Started > Setup Cluster > Using K3s > Scroll down to certificates code example and take 'Generate certificate by providing IP address'.
@@ -60,7 +60,24 @@ sudo chmod +x ./Certificates/gen_with_ca.sh
 
 <br>
 
-### 2 Install the Ieprovision tool
+### install k3s
+1. Install K3S by using following command:
+```bash
+curl -sfL https://get.k3s.io | sh -
+```
+2. Verify the Installation
+```bash
+sudo k3s kubectl get node
+```
+3. configure kubectl
+```bash
+mkdir ~/.kube/
+sudo cp -a /etc/rancher/k3s/k3s.yaml ~/.kube/config
+sudo chown -R $USER $HOME/.kube
+sudo chown -R $USER /etc/rancher/k3s/k3s.yaml
+```
+
+### Install the Ieprovision tool
 1. Download the ieprovision tool from the [iehub.eu1.edge.siemens.cloud](https://iehub.eu1.edge.siemens.cloud)
 2. Extract the folder and place the file 'ieprovision' in the Provision Folder
 Extract the ieprovision to the ./Provision folder.
@@ -73,14 +90,14 @@ sudo install ./Provision/ieprovision /usr/local/bin/
 
 <br>
 
-### 3 Create k8s namespace for the managment
+### Create k8s namespace for the managment
 ```bash
 kubectl create namespace iem
 ```
 
 <br>
 
-### 4 Give permissions for k3s (kubectl)
+### Give permissions for k3s (kubectl)
 Run the following commands
 ```bash 
 mkdir ~/.kube/
@@ -90,7 +107,7 @@ sudo chown <your-user:your-group> ~/.kube/config
 
 <br>
 
-### 5 Create onboarding file in the IEHUB
+### Create onboarding file in the IEHUB
 1. Navigate to IEM Instances and click ```Create new IEM Instance```
 2. Fill in the name and save
 3. Download the onboarding file
@@ -99,7 +116,7 @@ sudo chown <your-user:your-group> ~/.kube/config
 
 <br>
 
-### 6 Install the IEM on the kubernetes (k3s) Cluster
+### Install the IEM on the kubernetes (k3s) Cluster
 1. Run
 ```bash
  ieprovision install ./Onboarding/configuration.json \
