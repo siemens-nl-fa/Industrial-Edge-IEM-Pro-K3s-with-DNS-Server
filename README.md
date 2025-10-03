@@ -151,7 +151,7 @@ sudo chown <your-user:your-group> ~/.kube/config
 
 <br>
 
-### Configure Ingress for IP based setup
+### Configure Ingress
 1. Get the service name of Industrial Edge Gateway
 ```bash
 kubectl get svc --no-headers -o custom-columns=":metadata.name" -n iem | grep gateway-proxy
